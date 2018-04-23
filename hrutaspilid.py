@@ -5,6 +5,8 @@ Mikael og Hrólfur
 Lokaverkefni - Hrútaspilið
 '''
 
+import random
+
 class Spil():
 
     fj_hruta = 0
@@ -19,25 +21,25 @@ class Spil():
         self.thykkiBaks = thykkiBaks
         self.malir = malir
 
-skra = open("hrutar.txt", "r")
 
+skra = open("hrutar.txt", "r")
 hrutar = []
 for line in skra:
-    lina =  line.split(",")
-            
+    lina =  line.split(",")        
     hrutar.append(lina)
 
-print(hrutar)
-
+#print(hrutar)
 skra.close()
 
-#Valmynd
-print("=======================================")
+
+spilari = []
+talva = []
+
 val = 0
 while val != 3:
 
     print("1. Stillingar\n2. Spila\n3. Hætta")
-    val = int(input("====================>>> "))
+    val = int(input("Sláðu inn tölu: "))
 
     print("=======================================")
 
@@ -48,13 +50,22 @@ while val != 3:
 
     #Liður 2
     elif val == 2:
-        spilarar = int(input("Sláðu inn fjölda spilara: "))
-        tolvur = int(input("Sláðu inn fjölda talva: "))
+        random.shuffle(hrutar)
+        #Spil notendans
+        for x in range(26):
+            spilari.append(hrutar[x])
+        #spil tölvunar
+        for x in range(26):
+            talva.append(hrutar[x + 26])
+        print(spilari)
+        print(talva)
 
-    elif val == 3:
-        print("Þú hættir")
+        
 
     else:
-        dprint("Rangur innsláttur")
+        if val == 3:
+            print("Þú hættir")
+        else:
+            print("Rangur innsláttur")
 
     print("=======================================")
