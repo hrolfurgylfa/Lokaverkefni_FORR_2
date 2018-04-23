@@ -19,6 +19,10 @@ class Spil():
         self.thykkiBaks = thykkiBaks
         self.malir = malir
 
+hrutar = open("hrutar.txt", "r")
+
+for lina in hrutar:
+    lina =  line.split(";")
 
 
         
