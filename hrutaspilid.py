@@ -32,11 +32,12 @@ print(hrutar)
 skra.close()
 
 #Valmynd
+print("=======================================")
 val = 0
 while val != 3:
 
     print("1. Stillingar\n2. Spila\n3. Hætta")
-    val = int(input("Sláðu inn tölu: "))
+    val = int(input("====================>>> "))
 
     print("=======================================")
 
@@ -50,10 +51,10 @@ while val != 3:
         spilarar = int(input("Sláðu inn fjölda spilara: "))
         tolvur = int(input("Sláðu inn fjölda talva: "))
 
+    elif val == 3:
+        print("Þú hættir")
+
     else:
-        if val == 3:
-            print("Þú hættir")
-        else:
-            print("Rangur innsláttur")
+        dprint("Rangur innsláttur")
 
     print("=======================================")
