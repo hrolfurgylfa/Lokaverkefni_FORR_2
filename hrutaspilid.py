@@ -25,4 +25,36 @@ for lina in hrutar:
     lina =  line.split(";")
 
 
-        
+
+val = ""
+
+while val != 3:
+
+    for tel in range(50):#Þessi for lúppa gerir línu sem er auðvelt að stjórna stærðinni á
+        print("-",end="")
+    print("\n")#Þetta er til þess að gera tvö enter
+
+    print("1. Stillingar")
+    print("2. Spila")
+    print("3. Hætta")
+    valmynd = input("-------------------->>> ")#Hérna velur notandinn hvaða lið hann ætlar að fara í
+
+    print()#Þetta er til þess að gera enter
+    for tel in range(50):#Þessi for lúppa gerir línu sem er auðvelt að stjórna stærðinni á
+        print("-",end="")
+    print()#Þetta er til þess að gera enter
+
+    if valmynd == "1":#Liður 1
+        print("Það eru ekki komnar neinar stillingar")
+
+    elif valmynd == "2":#Liður 2
+        print("Sláðu inn hversu margir spilarar eiga að vera")
+        spilarar = input("-------------------->>> ")
+        print("\nSláðu inn hversu margar tölvur eiga að vera")
+        tolvur = input("-------------------->>> ")
+
+    elif valmynd == "3":#Þetta er til þess að það komi ekki "ERROR Sláðu inn tölu á milli 1 og 3" þegar maður er að hætta í forritinu
+        pass
+
+    else:
+        print("ERROR\tSláðu inn tölu á milli 1 og 3")
