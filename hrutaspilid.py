@@ -19,13 +19,19 @@ class Spil():
         self.thykkiBaks = thykkiBaks
         self.malir = malir
 
-hrutar = open("hrutar.txt", "r")
+skra = open("hrutar.txt", "r")
 
-for lina in hrutar:
+hrutar = []
+for line in skra:
     lina =  line.split(",")
+            
+    hrutar.append(lina)
 
+print(hrutar)
 
+skra.close()
 
+#Valmynd
 val = ""
 
 while val != 3:
