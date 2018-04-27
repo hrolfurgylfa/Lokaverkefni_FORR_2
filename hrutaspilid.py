@@ -11,11 +11,12 @@ class Hrutar():
 
     fj_hruta = 0
 
-    def __init__(self, thyngd, mjolk, ull, fjAfkvaema, laeri, frjosemi, thykkiBaks, malir):
+    def __init__(self, nafn, thyngd, mjolk, ull, fjAfkvaema, laeri, frjosemi, thykkiBaks, malir):
+        self.nafn = nafn
         self.thyngd = thyngd
         self.mjolk = mjolk
         self.ull = ull
-        self.fjAfkvæma = fjAfkvæma
+        self.fjAfkvæma = fjAfkvaema
         self.laeri = laeri
         self.frjosemi = frjosemi
         self.thykkiBaks = thykkiBaks
@@ -38,6 +39,8 @@ for stak in spil:
 spilari = []
 talva = []
 
+#spilastokkurInotkun = []
+
 val = 0
 while val != 3:
 
@@ -53,23 +56,13 @@ while val != 3:
 
     #Liður 2
     elif val == 2:
-        random.shuffle(hrutar)
-        #Spil notendans
-        for x in range(26):
-            spilari.append(hrutar[x])
-        #spil tölvunar
-        for x in range(26):
-            talva.append(hrutar[x + 26])
-        print(spilari)
-        print(talva)
+         for x in range(52)
+         
 
-        
-    #Hérna fer notandinn þegar hann hættir
-    if val == 3:
-        print("Leikurinn er að lokast")
- 
-    #Hérna fer notandinn ef hann slær inn ranga tölu
     else:
-        print("Rangur innsláttur")
-        print("=======================================")
-    
+        if val == 3:
+            print("Þú hættir")
+        else:
+            print("Rangur innsláttur")
+
+    print("=======================================")
