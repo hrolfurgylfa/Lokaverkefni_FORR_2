@@ -80,9 +80,11 @@ while val != 3:
 
             if spilariSpilar == 1:
                 print("> Hér er spilið þitt:")
-                print("Nafn:\n" + spilari[0].nafn)
+                print("Nafn:\t" + spilari[0].nafn)
+                print()
                 print("Þyngd\tMjólk\tUll\tFjafkvæma")
                 print(spilari[0].thyngd +"\t"+ spilari[0].mjolk +"\t"+ spilari[0].ull +"\t"+ spilari[0].fjAfkvaema)
+                print()
                 print("Læri\tFrjós\tÞykkBak\tMalir")
                 print(spilari[0].laeri +"\t"+ spilari[0].frjosemi +"\t"+ spilari[0].thykkiBaks +"\t"+ spilari[0].malir)
 
@@ -92,7 +94,7 @@ while val != 3:
                 print("Hér er spilið tölvunar:", talva[0].nafn)
                 spilariSpilar = 1
                 talvaSpilar = 0
-            leiklokid = False
+            leiklokid = True
                 
 
     else:
