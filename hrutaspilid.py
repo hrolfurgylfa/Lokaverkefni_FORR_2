@@ -7,7 +7,7 @@ Lokaverkefni - Hrútaspilið
 
 import random
 
-class Spil():
+class Hrutar():
 
     fj_hruta = 0
 
@@ -22,15 +22,18 @@ class Spil():
         self.malir = malir
 
 
+spil = []
 skra = open("hrutar.txt", "r")
-hrutar = []
-for line in skra:
-    lina =  line.split(",")        
-    hrutar.append(lina)
-
-#print(hrutar)
+for lina in skra:
+    spil.append(lina)       
 skra.close()
 
+temp = []
+spilastokkur = []
+
+for stak in spil:
+    temp = stak.split(",")
+    spilastokkur.append(Hrutar(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6], temp[7], temp[8]))
 
 spilari = []
 talva = []
@@ -50,17 +53,7 @@ while val != 3:
 
     #Liður 2
     elif val == 2:
-        random.shuffle(hrutar)
-        #Spil notendans
-        for x in range(26):
-            spilari.append(hrutar[x])
-        #spil tölvunar
-        for x in range(26):
-            talva.append(hrutar[x + 26])
-        print(spilari)
-        print(talva)
-
-        
+ 
 
     else:
         if val == 3:
