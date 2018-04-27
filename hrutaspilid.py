@@ -61,11 +61,12 @@ while val != 3:
         print(talva)
 
         
+    #Hérna fer notandinn þegar hann hættir
+    if val == 3:
+        print("Leikurinn er að lokast")
 
+    #Hérna fer notandinn ef hann slær inn ranga tölu
     else:
-        if val == 3:
-            print("Þú hættir")
-        else:
-            print("Rangur innsláttur")
-
-    print("=======================================")
+        print("Rangur innsláttur")
+        print("=======================================")
+    
