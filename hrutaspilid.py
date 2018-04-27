@@ -71,8 +71,11 @@ while val != 3:
             spilari.append(spilastokkur[x])
         for x in range(26, 52):
             talva.append(spilastokkur[x])
-        print(spilari)
-        print("\n", talva)
+
+        leiklokid = False
+        while leiklokid != True:
+            kynd_spilara = random.randint(0,len(spilari)-1)
+            print("kindin þín:",spilari[kynd_spilara].nafn)
 
     else:
         if val == 3:
