@@ -49,8 +49,20 @@ while val != 3:
 
     #Liður 1
     if val == 1:
-        pass
-        print("Það eru ekki komnar neinar stillingar")
+        stillingar_val = ""
+        while stillingar_val != "3":
+            print(Hrutar)#TEST
+            print("Ýttu á 1 til þess að velja magn talva sem þú keppir á móti")
+            print("Ýttu á 2 til þess að velja magn alvöru spilara")
+            stillingar_val = input("----->")
+            if stillingar_val == 1:#Stillingar fyrir fjölda tölvu keppenda
+                tolvu_keppendur = input("Sláðu inn fjölda tölvu keppenda (max 3) >>> ")
+            elif stillingar_val == 2:#Stillingar fyrir fjölda alvöru spilara
+                alvoru_keppendur = input("Sláðu inn fjölda alvöru keppenda (max 3) >>> ")
+            elif stillingar_val == 3:#Hérna fer maður ef maður er að fara út úr stillingarvalmyndinni
+                pass
+            else:#Hérna fer notandinn ef hann slær inn ranga tölu
+                print("Rangur innsláttur")
 
     #Liður 2
     elif val == 2:
