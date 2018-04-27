@@ -39,8 +39,6 @@ for stak in spil:
 spilari = []
 talva = []
 
-#spilastokkurInotkun = []
-
 val = 0
 while val != 3:
 
@@ -51,33 +49,23 @@ while val != 3:
 
     #Liður 1
     if val == 1:
-        stillingar_val = ""
-        while stillingar_val != "3":
-            print(Hrutar)#TEST
-            print("Ýttu á 1 til þess að velja magn talva sem þú keppir á móti")
-            print("Ýttu á 2 til þess að velja magn alvöru spilara")
-            stillingar_val = input("----->")
-            if stillingar_val == 1:#Stillingar fyrir fjölda tölvu keppenda
-                tolvu_keppendur = input("Sláðu inn fjölda tölvu keppenda (max 3) >>> ")
-            elif stillingar_val == 2:#Stillingar fyrir fjölda alvöru spilara
-                alvoru_keppendur = input("Sláðu inn fjölda alvöru keppenda (max 3) >>> ")
-            elif stillingar_val == 3:#Hérna fer maður ef maður er að fara út úr stillingarvalmyndinni
-                pass
-            else:#Hérna fer notandinn ef hann slær inn ranga tölu
-                print("Rangur innsláttur")
+        pass
+        print("Það eru ekki komnar neinar stillingar")
 
     #Liður 2
     elif val == 2:
-        for x in range(52):
-            pass
-         
+        random.shuffle(spilastokkur)
+        for x in range(26):
+            spilari.append(spilastokkur[x])
+        for x in range(26, 52):
+            talva.append(spilastokkur[x])
+        print(spilari)
+        print("\n", talva)
 
-    #Hérna fer notandinn þegar hann hættir
-    if val == 3:
-        print("Leikurinn er að lokast")
- 
-    #Hérna fer notandinn ef hann slær inn ranga tölu
     else:
-        print("Rangur innsláttur")
-        print("=======================================")
-    
+        if val == 3:
+            print("Þú hættir")
+        else:
+            print("Rangur innsláttur")
+
+    print("=======================================")
