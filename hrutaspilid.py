@@ -56,9 +56,9 @@ while val != 3:
             print("Ýttu á 2 til þess að velja magn alvöru spilara")
             stillingar_val = input("----->")
             if stillingar_val == 1:#Stillingar fyrir fjölda tölvu keppenda
-                pass
+                tolvu_keppendur = input("Sláðu inn fjölda tölvu keppenda >>> ")
             elif stillingar_val == 2:#Stillingar fyrir fjölda alvöru spilara
-                pass
+                alvoru_keppendur = input("Sláðu inn fjölda alvöru keppenda >>> ")
             elif stillingar_val == 3:#Hérna fer maður ef maður er að fara út úr stillingarvalmyndinni
                 pass
             else:#Hérna fer notandinn ef hann slær inn ranga tölu
