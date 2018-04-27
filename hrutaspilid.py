@@ -59,10 +59,12 @@ while val != 3:
          for x in range(52)
          
 
+    #Hérna fer notandinn þegar hann hættir
+    if val == 3:
+        print("Leikurinn er að lokast")
+ 
+    #Hérna fer notandinn ef hann slær inn ranga tölu
     else:
-        if val == 3:
-            print("Þú hættir")
-        else:
-            print("Rangur innsláttur")
-
-    print("=======================================")
+        print("Rangur innsláttur")
+        print("=======================================")
+    
