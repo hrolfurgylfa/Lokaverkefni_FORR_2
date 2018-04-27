@@ -69,10 +69,11 @@ while val != 3:
         for x in range(26, 52):
             talva.append(spilastokkur[x])
 
-        leiklokid = 0
         spilariSpilar = 1
         talvaSpilar = 0
-        while leiklokid != 1:
+        leiklokid = False
+        while leiklokid != True:
+            kynd_spilara = random.randint(0,len(spilari)-1)
 
             s_spil = random.choice(spilari)
             t_spil = random.choice(talva)
@@ -86,7 +87,6 @@ while val != 3:
 
             svar = 0
             if spilariSpilar == 1:
-
                 print("Hverju viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
                 svar = int(input("Sláðu inn tölu: "))
 
@@ -102,7 +102,7 @@ while val != 3:
                 print("Hér er spilið tölvunar:", talva[0].nafn)
                 spilariSpilar = 1
                 talvaSpilar = 0
-            leiklokid = 1
+            leiklokid = True
                 
 
     else:
