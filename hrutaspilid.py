@@ -79,11 +79,14 @@ while val != 3:
             t_spil = random.choice(talva)
 
             print("> Hér er spilið þitt:")
-            print("Nafn:\n" + s_spil.nafn)
+            print("Nafn:\t" + spilari[0].nafn)
+            print()
             print("Þyngd\tMjólk\tUll\tFjafkvæma")
-            print(s_spil.thyngd +"\t"+ s_spil.mjolk +"\t"+ s_spil.ull +"\t"+ s_spil.fjAfkvaema)
+            print(spilari[0].thyngd +"\t"+ spilari[0].mjolk +"\t"+ spilari[0].ull +"\t"+ spilari[0].fjAfkvaema)
+            print()
             print("Læri\tFrjós\tÞykkBak\tMalir")
-            print(s_spil.laeri +"\t"+ s_spil.frjosemi +"\t"+ s_spil.thykkiBaks +"\t"+ s_spil.malir)
+            print(spilari[0].laeri +"\t"+ spilari[0].frjosemi +"\t"+ spilari[0].thykkiBaks +"\t"+ spilari[0].malir)
+            print("=======================================")
 
             svar = 0
             if spilariSpilar == 1:
