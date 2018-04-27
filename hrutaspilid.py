@@ -99,7 +99,7 @@ while val != 3:
 
     else:
         if val == 3:
-            print("Þú hættir")
+            print("Leikurinn er að lokast")
         else:
             print("Rangur innsláttur")
 
