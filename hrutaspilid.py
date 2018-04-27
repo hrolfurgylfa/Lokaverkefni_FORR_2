@@ -22,6 +22,15 @@ class Hrutar():
         self.thykkiBaks = thykkiBaks
         self.malir = malir
 
+def spilariVann(spil_s, spil_t):
+    print("Þú vannst")
+    spilari.append(spil_t)
+    talva.pop(talva.index(spil_t))
+
+def talvaVann(spil_s, spil_t):
+    print("Þú tapaðir")
+    talva.append(spil_s)
+    spilari.pop(spilari.index(spil_s))
 
 spil = []
 skra = open("hrutar.txt", "r")
@@ -49,20 +58,8 @@ while val != 3:
 
     #Liður 1
     if val == 1:
-        stillingar_val = ""
-        while stillingar_val != "3":
-            print(Hrutar)#TEST
-            print("Ýttu á 1 til þess að velja magn talva sem þú keppir á móti")
-            print("Ýttu á 2 til þess að velja magn alvöru spilara")
-            stillingar_val = input("----->")
-            if stillingar_val == 1:#Stillingar fyrir fjölda tölvu keppenda
-                tolvu_keppendur = input("Sláðu inn fjölda tölvu keppenda (max 3) >>> ")
-            elif stillingar_val == 2:#Stillingar fyrir fjölda alvöru spilara
-                alvoru_keppendur = input("Sláðu inn fjölda alvöru keppenda (max 3) >>> ")
-            elif stillingar_val == 3:#Hérna fer maður ef maður er að fara út úr stillingarvalmyndinni
-                pass
-            else:#Hérna fer notandinn ef hann slær inn ranga tölu
-                print("Rangur innsláttur")
+        pass
+        print("Það eru ekki komnar neinar stillingar")
 
     #Liður 2
     elif val == 2:
@@ -78,16 +75,27 @@ while val != 3:
         while leiklokid != True:
             kynd_spilara = random.randint(0,len(spilari)-1)
 
-            if spilariSpilar == 1:
-                print("> Hér er spilið þitt:")
-                print("Nafn:\t" + spilari[0].nafn)
-                print()
-                print("Þyngd\tMjólk\tUll\tFjafkvæma")
-                print(spilari[0].thyngd +"\t"+ spilari[0].mjolk +"\t"+ spilari[0].ull +"\t"+ spilari[0].fjAfkvaema)
-                print()
-                print("Læri\tFrjós\tÞykkBak\tMalir")
-                print(spilari[0].laeri +"\t"+ spilari[0].frjosemi +"\t"+ spilari[0].thykkiBaks +"\t"+ spilari[0].malir)
+            s_spil = random.choice(spilari)
+            t_spil = random.choice(talva)
 
+            print("> Hér er spilið þitt:")
+            print("Nafn:\n" + s_spil.nafn)
+            print("Þyngd\tMjólk\tUll\tFjafkvæma")
+            print(s_spil.thyngd +"\t"+ s_spil.mjolk +"\t"+ s_spil.ull +"\t"+ s_spil.fjAfkvaema)
+            print("Læri\tFrjós\tÞykkBak\tMalir")
+            print(s_spil.laeri +"\t"+ s_spil.frjosemi +"\t"+ s_spil.thykkiBaks +"\t"+ s_spil.malir)
+
+            svar = 0
+            if spilariSpilar == 1:
+                print("Hverju viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
+                svar = int(input("Sláðu inn tölu: "))
+
+                if svar == 1:
+                    if s_spil.thyngd > t_spil.thyngd:
+                        spilariVann(s_spil, t_spil)
+                elif svar == 2:
+                    if s_spil.thyngd > t_spil.thyngd:
+                        print("Þú vannst")
                 spilariSpilar = 0
                 talvaSpilar = 1
             elif talvaSpilar == 1:
