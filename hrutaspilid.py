@@ -126,23 +126,11 @@ while val != 3:
                         
             elif talvaSpilar == 1:
                 print("Hér er spilið tölvunar:", talva[0].nafn)
-<<<<<<< HEAD
                 
             
             print("Spilari 1 er núna með",len(spilari),"spil og talvan er núna með",len(talva),"spil")
             
             #leiklokid = True#TEST
-=======
-                spilariSpilar = 1
-                talvaSpilar = 0
-
-            print("=======================================")
-
-            #print(len(spilari))
-            #print(len(talva))
-            #print(spilari[0].nafn, spilari[1].nafn)
-            leiklokid = True
->>>>>>> a5e84bd5d414d33e06d2c1fea0a9f04561f20eea
                 
 
     else:
