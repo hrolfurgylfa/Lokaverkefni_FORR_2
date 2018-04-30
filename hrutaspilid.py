@@ -82,7 +82,7 @@ while val != 3:
             print("Nafn:\t" + spilari[0].nafn)
             print()
             print("Þyngd\tMjólk\tUll\tFjafkvæma")
-            print(spilari[0].thyngd +"\t"+ spilari[0].mjolk +"\t"+ spilari[0].ull +"\t"+ spilari[0].fjAfkvaema)
+            print(spilari[0].thyngd +" \t"+ spilari[0].mjolk +"\t"+ spilari[0].ull +"\t"+ spilari[0].fjAfkvaema)
             print()
             print("Læri\tFrjós\tÞykkBak\tMalir")
             print(spilari[0].laeri +"\t"+ spilari[0].frjosemi +"\t"+ spilari[0].thykkiBaks +"\t"+ spilari[0].malir)
@@ -90,7 +90,7 @@ while val != 3:
 
             svar = 0
             if spilariSpilar == 1:
-                print("Hverju viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
+                print("Hverjux viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
                 svar = int(input("Sláðu inn tölu: "))
 
                 if svar == 1:
@@ -105,6 +105,8 @@ while val != 3:
                 print("Hér er spilið tölvunar:", talva[0].nafn)
                 spilariSpilar = 1
                 talvaSpilar = 0
+            
+            print("Spilari 1 er núna með",len(spilari),"spil og talvan er núna með",len(talva),"spil")
             leiklokid = True
                 
 
