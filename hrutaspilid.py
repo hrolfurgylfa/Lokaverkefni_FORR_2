@@ -28,6 +28,7 @@ def spilariVann(spil_s, spil_t):
     talva.pop(talva.index(spil_t))
     spilariSpilar = 1
     talvaSpilar = 0
+    spilari.append(spilari.pop(spilari.index(spil_s)))
 
 def talvaVann(spil_s, spil_t):
     print("Þú tapaðir")
@@ -35,7 +36,7 @@ def talvaVann(spil_s, spil_t):
     spilari.pop(spilari.index(spil_s))
     spilariSpilar = 0
     talvaSpilar = 1
-
+    talva.append(talva.pop(talva.index(spil_t)))
 
 spil = []
 skra = open("hrutar.txt", "r")
@@ -81,19 +82,18 @@ while val != 3:
         while leiklokid != True:
             kynd_spilara = random.randint(0,len(spilari)-1)
 
-            s_spil = random.choice(spilari)
-            t_spil = random.choice(talva)
+            s_spil = spilari[0]
+            t_spil = talva[0]
 
             print("> Hér er spilið þitt:")
-            print("Nafn:\t" + spilari[0].nafn)
-            print()
+            print("Nafn:\n" + s_spil.nafn)
             print("Þyngd\tMjólk\tUll\tFjafkvæma")
-            print(spilari[0].thyngd +" \t"+ spilari[0].mjolk +"\t"+ spilari[0].ull +"\t"+ spilari[0].fjAfkvaema)
-            print()
+            print(s_spil.thyngd +"\t"+ s_spil.mjolk +"\t"+ s_spil.ull +"\t"+ s_spil.fjAfkvaema)
             print("Læri\tFrjós\tÞykkBak\tMalir")
-            print(spilari[0].laeri +"\t"+ spilari[0].frjosemi +"\t"+ spilari[0].thykkiBaks +"\t"+ spilari[0].malir)
-            print("=======================================")
+            print(s_spil.laeri +"\t"+ s_spil.frjosemi +"\t"+ s_spil.thykkiBaks +"\t"+ s_spil.malir)
 
+            #print(spilari[0].nafn, spilari[1].nafn)
+            
             svar = 0
             if spilariSpilar == 1:
                 print("Hverjux viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
@@ -126,16 +126,28 @@ while val != 3:
                         
             elif talvaSpilar == 1:
                 print("Hér er spilið tölvunar:", talva[0].nafn)
+<<<<<<< HEAD
                 
             
             print("Spilari 1 er núna með",len(spilari),"spil og talvan er núna með",len(talva),"spil")
             
             #leiklokid = True#TEST
+=======
+                spilariSpilar = 1
+                talvaSpilar = 0
+
+            print("=======================================")
+
+            #print(len(spilari))
+            #print(len(talva))
+            #print(spilari[0].nafn, spilari[1].nafn)
+            leiklokid = True
+>>>>>>> a5e84bd5d414d33e06d2c1fea0a9f04561f20eea
                 
 
     else:
         if val == 3:
-            print("Leikurinn er að lokast")
+            print("Þú hættir")
         else:
             print("Rangur innsláttur")
 
