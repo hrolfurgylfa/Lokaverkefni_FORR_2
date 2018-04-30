@@ -48,6 +48,12 @@ for stak in spil:
 spilari = []
 talva = []
 
+random.shuffle(spilastokkur)
+for x in range(26):
+    spilari.append(spilastokkur[x])
+for x in range(26, 52):
+    talva.append(spilastokkur[x])
+
 val = 0
 while val != 3:
 
@@ -63,11 +69,6 @@ while val != 3:
 
     #Liður 2
     elif val == 2:
-        random.shuffle(spilastokkur)
-        for x in range(26):
-            spilari.append(spilastokkur[x])
-        for x in range(26, 52):
-            talva.append(spilastokkur[x])
 
         spilariSpilar = 1
         talvaSpilar = 0
@@ -94,14 +95,35 @@ while val != 3:
                     if s_spil.thyngd > t_spil.thyngd:
                         spilariVann(s_spil, t_spil)
                 elif svar == 2:
-                    if s_spil.thyngd > t_spil.thyngd:
-                        print("Þú vannst")
+                    if s_spil.mjolk > t_spil.mjolk:
+                        spilariVann(s_spil, t_spil)
+                elif svar == 3:
+                    if s_spil.ull > t_spil.ull:
+                        spilariVann(s_spil, t_spil)
+                elif svar == 4:
+                    if s_spil.fjAfkvaema > t_spil.fjAfkvaema:
+                        spilariVann(s_spil, t_spil)
+                elif svar == 5:
+                    if s_spil.laeri > t_spil.laeri:
+                        spilariVann(s_spil, t_spil)
+                elif svar == 6:
+                    if s_spil.frjosemi > t_spil.frjosemi:
+                        spilariVann(s_spil, t_spil)
+                elif svar == 7:
+                    if s_spil.thykkiBaks > t_spil.thykkiBaks:
+                        spilariVann(s_spil, t_spil)
+                elif svar == 8:
+                    if s_spil.malir > t_spil.malir:
+                        spilariVann(s_spil, t_spil)
                 spilariSpilar = 0
                 talvaSpilar = 1
             elif talvaSpilar == 1:
                 print("Hér er spilið tölvunar:", talva[0].nafn)
                 spilariSpilar = 1
                 talvaSpilar = 0
+
+            #print(len(spilari))
+            #print(len(talva))
             leiklokid = True
                 
 
