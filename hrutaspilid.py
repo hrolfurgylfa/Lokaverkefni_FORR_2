@@ -130,12 +130,45 @@ while val != 3:
                         spilariVann(s_spil, t_spil)
                         
             elif talvaSpilar == 1:
-                print("Hér er spilið tölvunar:", talva[0].nafn)
-                
-            print("Spilari 1 er núna með",len(spilari),"spil og talvan er núna með",len(talva),"spil")
+                #print("Hér er spilið tölvunar:", talva[0].nafn)
+                print("talvan á leik núna")
+                tel = random.randint(1,8)
+                if tel == 1:
+                    print("Talvan spilar í: Þyngd")
+                    if t_spil.thyngd > s_spil.thyngd:
+                        talvaVann(s_spil, t_spil)
+                elif tel == 2:
+                    print("Talvan spilar í: Mjólk")
+                    if t_spil.mjolk > s_spil.mjolk:
+                        talvaVann(s_spil, t_spil)
+                elif tel == 3:
+                    print("Talvan spilar í: Ull")
+                    if t_spil.ull > s_spil.ull:
+                        talvaVann(s_spil, t_spil)
+                elif tel == 4:
+                    print("Talvan spilar í: Fjöldi Afkvæma")
+                    if t_spil.fjAfkvaema > s_spil.fjAfkvaema:
+                        talvaVann(s_spil, t_spil)
+                elif tel == 5:
+                    print("Talvan spilar í: Læri")
+                    if t_spil.laeri > s_spil.laeri:
+                        talvaVann(s_spil, t_spil)
+                elif tel == 6:
+                    print("Talvan spilar í: Frjósemi")
+                    if t_spil.frjosemi > s_spil.frjosemi:
+                        talvaVann(s_spil, t_spil)
+                elif tel == 7:
+                    print("Talvan spilar í: Þykki Baks")
+                    if t_spil.thykkiBaks > s_spil.thykkiBaks:
+                        talvaVann(s_spil, t_spil)
+                elif tel == 8:
+                    print("Talvan spilar í: Malir")
+                    if t_spil.malir > s_spil.malir:
+                        talvaVann(s_spil, t_spil)
             
-            #leiklokid = True#TEST
-                
+            print("Spilari 1 er núna með",len(spilari),"spil og talvan er núna með",len(talva),"spil")
+            print(spilari[0].nafn, spilari[1].nafn)
+            print(talva[0].nafn, talva[1].nafn)
 
     else:
         if val == 3:
