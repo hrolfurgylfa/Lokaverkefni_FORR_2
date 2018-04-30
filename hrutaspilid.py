@@ -23,7 +23,8 @@ class Hrutar():
         self.malir = malir
 
 def spilariVann(spil_s, spil_t):
-    print("Þú vannst")
+    print("\n==============================\n")
+    print("Þú vannst\n")
     spilari.append(spil_t)
     talva.pop(talva.index(spil_t))
     spilariSpilar = 1
@@ -31,7 +32,8 @@ def spilariVann(spil_s, spil_t):
     spilari.append(spilari.pop(spilari.index(spil_s)))
 
 def talvaVann(spil_s, spil_t):
-    print("Þú tapaðir")
+    print("\n==============================\n")
+    print("Þú tapaðir\n")
     talva.append(spil_s)
     spilari.pop(spilari.index(spil_s))
     spilariSpilar = 0
@@ -85,49 +87,51 @@ while val != 3:
             s_spil = spilari[0]
             t_spil = talva[0]
 
+            print("==============================")
             print("> Hér er spilið þitt:")
-            print("Nafn:\n" + s_spil.nafn)
+            print("\nNafn:\t" + s_spil.nafn)
+            print()#Þetta er til þess að búa til bil svo að þetta líti betur út
             print("Þyngd\tMjólk\tUll\tFjafkvæma")
             print(s_spil.thyngd +"\t"+ s_spil.mjolk +"\t"+ s_spil.ull +"\t"+ s_spil.fjAfkvaema)
             print("Læri\tFrjós\tÞykkBak\tMalir")
             print(s_spil.laeri +"\t"+ s_spil.frjosemi +"\t"+ s_spil.thykkiBaks +"\t"+ s_spil.malir)
+            print("==============================")
 
             #print(spilari[0].nafn, spilari[1].nafn)
             
-            svar = 0
+            svar = "0"
             if spilariSpilar == 1:
                 print("Hverjux viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
-                svar = int(input("Sláðu inn tölu: "))
+                svar = input("Sláðu inn tölu: ")
 
-                if svar == 1:
+                if svar == "1":
                     if s_spil.thyngd > t_spil.thyngd:
                         spilariVann(s_spil, t_spil)
-                elif svar == 2:
+                elif svar == "2":
                     if s_spil.mjolk > t_spil.mjolk:
                         spilariVann(s_spil, t_spil)
-                elif svar == 3:
+                elif svar == "3":
                     if s_spil.ull > t_spil.ull:
                         spilariVann(s_spil, t_spil)
-                elif svar == 4:
+                elif svar == "4":
                     if s_spil.fjAfkvaema > t_spil.fjAfkvaema:
                         spilariVann(s_spil, t_spil)
-                elif svar == 5:
+                elif svar == "5":
                     if s_spil.laeri > t_spil.laeri:
                         spilariVann(s_spil, t_spil)
-                elif svar == 6:
+                elif svar == "6":
                     if s_spil.frjosemi > t_spil.frjosemi:
                         spilariVann(s_spil, t_spil)
-                elif svar == 7:
+                elif svar == "7":
                     if s_spil.thykkiBaks > t_spil.thykkiBaks:
                         spilariVann(s_spil, t_spil)
-                elif svar == 8:
+                elif svar == "8":
                     if s_spil.malir > t_spil.malir:
                         spilariVann(s_spil, t_spil)
                         
             elif talvaSpilar == 1:
                 print("Hér er spilið tölvunar:", talva[0].nafn)
                 
-            
             print("Spilari 1 er núna með",len(spilari),"spil og talvan er núna með",len(talva),"spil")
             
             #leiklokid = True#TEST
