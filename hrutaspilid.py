@@ -22,6 +22,38 @@ class Hrutar():
         self.thykkiBaks = thykkiBaks
         self.malir = malir
 
+class Keppa():
+    def __init__(self, spil_s, spil_t, tolva_keppa, spilari_keppa):
+        self.spil_t = spil_t
+        self.spil_s = spil_s
+        self.tolva_keppa = tolva_keppa
+        self.spilari_keppa = spilari_keppa
+
+    def keppni(self):
+        if self.tolva_keppa > self.spilari_keppa:
+            print("\n==============================\n")
+            print("Þú tapaðir\n")
+            talva.append(self.spil_s)
+            spilari.pop(spilari.index(self.spil_s))
+            spilariSpilar = 0
+            talvaSpilar = 1
+            talva.append(talva.pop(talva.index(self.spil_t)))
+
+        elif self.tolva_keppa < self.spilari_keppa:
+            print("\n==============================\n")
+            print("Þú vannst\n")
+            spilari.append(self.spil_t)
+            talva.pop(talva.index(self.spil_t))
+            spilariSpilar = 1
+            talvaSpilar = 0
+            spilari.append(spilari.pop(spilari.index(self.spil_s)))
+
+        elif self.spil_t.thyngd == self.spil_s.thyngd:
+            print("jafntefli")
+        else:
+            print("ERROR, Class: Keppa, Fall: Keppni")
+
+
 def spilariVann(spil_s, spil_t):
     print("\n==============================\n")
     print("Þú vannst\n")
@@ -105,8 +137,9 @@ while val != 3:
                 svar = input("Sláðu inn tölu: ")
 
                 if svar == "1":
-                    if s_spil.thyngd > t_spil.thyngd:
-                        spilariVann(s_spil, t_spil)
+                    t1 = Keppa(s_spil, t_spil, s_spil.thyngd, t_spil.thyngd)
+                    t1.keppni()
+
                 elif svar == "2":
                     if s_spil.mjolk > t_spil.mjolk:
                         spilariVann(s_spil, t_spil)
