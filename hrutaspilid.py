@@ -26,16 +26,14 @@ def spilariVann(spil_s, spil_t):
     print("Þú vannst")
     spilari.append(spil_t)
     talva.pop(talva.index(spil_t))
-    spilariSpilar = 1
-    talvaSpilar = 0
+    spilariSpilar = True
     spilari.append(spilari.pop(spilari.index(spil_s)))
 
 def talvaVann(spil_s, spil_t):
     print("Þú tapaðir")
     talva.append(spil_s)
     spilari.pop(spilari.index(spil_s))
-    spilariSpilar = 0
-    talvaSpilar = 1
+    spilariSpilar = False
     talva.append(talva.pop(talva.index(spil_t)))
 
 spil = []
@@ -81,31 +79,32 @@ while val != 3:
     #Liður 2
     elif val == 2:
 
-        spilariSpilar = 0
-        talvaSpilar = 1
+        spilariSpilar = True
         leiklokid = False
+        
         while leiklokid != True:
 
-            print("Umferð", umferdir, "\n=======================================") #Titill og Bil
-            kynd_spilara = random.randint(0,len(spilari)-1)
+            print("\n> Umferð", umferdir, "\n=======================================") #Titill og Bil
 
             s_spil = spilari[0]
             t_spil = talva[0]
 
             print("> Hér er spilið þitt:")
-            print("Nafn:\n" + s_spil.nafn)
+            print("\nNafn:", s_spil.nafn)
+            print("_________________________________")
             print("Þyngd\tMjólk\tUll\tFjafkvæma")
             print(s_spil.thyngd +"\t"+ s_spil.mjolk +"\t"+ s_spil.ull +"\t"+ s_spil.fjAfkvaema)
+            print("_________________________________")
             print("Læri\tFrjós\tÞykkBak\tMalir")
             print(s_spil.laeri +"\t"+ s_spil.frjosemi +"\t"+ s_spil.thykkiBaks +"\t"+ s_spil.malir)
 
             #Spilarinn á umferð núna
             svar = 0
-            if spilariSpilar == 1:
+            if spilariSpilar == True:
                 #Valmynd til að velja flokk
-                print("Hverjux viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
+                print("Hverju viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
                 svar = int(input("Sláðu inn tölu: "))
-
+                
                 if svar == 1:
                     if s_spil.thyngd > t_spil.thyngd:
                         spilariVann(s_spil, t_spil)
@@ -134,41 +133,57 @@ while val != 3:
                         spilariVann(s_spil, t_spil)
 
             #Talvan á umferð núna           
-            elif talvaSpilar == 1:
+            elif spilariSpilar == 0:
                 print("> Talvan á leik")
                 tel = random.randint(1,8)
                 if tel == 1:
                     print("Talvan spilar í flokkinum: Þyngd")
                     if t_spil.thyngd > s_spil.thyngd:
                         talvaVann(s_spil, t_spil)
+                    else:
+                        spilariVann(s_spil, t_spil)
                 elif tel == 2:
                     print("Talvan spilar í flokkinum: Mjólk")
                     if t_spil.mjolk > s_spil.mjolk:
                         talvaVann(s_spil, t_spil)
+                    else:
+                        spilariVann(s_spil, t_spil)
                 elif tel == 3:
                     print("Talvan spilar í flokkinum: Ull")
                     if t_spil.ull > s_spil.ull:
                         talvaVann(s_spil, t_spil)
+                    else:
+                        spilariVann(s_spil, t_spil)
                 elif tel == 4:
                     print("Talvan spilar í flokkinum: Fjöldi Afkvæma")
                     if t_spil.fjAfkvaema > s_spil.fjAfkvaema:
                         talvaVann(s_spil, t_spil)
+                    else:
+                        spilariVann(s_spil, t_spil)
                 elif tel == 5:
                     print("Talvan spilar í flokkinum: Læri")
                     if t_spil.laeri > s_spil.laeri:
                         talvaVann(s_spil, t_spil)
+                    else:
+                        spilariVann(s_spil, t_spil)
                 elif tel == 6:
                     print("Talvan spilar í flokkinum: Frjósemi")
                     if t_spil.frjosemi > s_spil.frjosemi:
                         talvaVann(s_spil, t_spil)
+                    else:
+                        spilariVann(s_spil, t_spil)
                 elif tel == 7:
                     print("Talvan spilar í flokkinum: Þykki Baks")
                     if t_spil.thykkiBaks > s_spil.thykkiBaks:
                         talvaVann(s_spil, t_spil)
+                    else:
+                        spilariVann(s_spil, t_spil)
                 elif tel == 8:
                     print("Talvan spilar í flokkinum: Malir")
                     if t_spil.malir > s_spil.malir:
                         talvaVann(s_spil, t_spil)
+                    else:
+                        spilariVann(s_spil, t_spil)
 
             #Ef spilastokkur spilarans er búinn, þá endar leikurinn
             if len(spilari) == 0:
