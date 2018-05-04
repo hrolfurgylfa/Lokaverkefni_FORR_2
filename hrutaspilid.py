@@ -35,21 +35,20 @@ class Keppa():
             print("Þú tapaðir\n")
             talva.append(self.spil_s)
             spilari.pop(spilari.index(self.spil_s))
-            spilariSpilar = 0
-            talvaSpilar = 1
             talva.append(talva.pop(talva.index(self.spil_t)))
+            return "T"
 
         elif self.tolva_keppa < self.spilari_keppa:
             print("\n==============================\n")
             print("Þú vannst\n")
             spilari.append(self.spil_t)
             talva.pop(talva.index(self.spil_t))
-            spilariSpilar = 1
-            talvaSpilar = 0
             spilari.append(spilari.pop(spilari.index(self.spil_s)))
+            return "S"
 
         elif self.spil_t.thyngd == self.spil_s.thyngd:
-            print("jafntefli")
+            print("jafntefli\n")
+            return "J"
         else:
             print("ERROR, Class: Keppa, Fall: Keppni")
 
@@ -119,8 +118,6 @@ while val != 3:
         while leiklokid != True:
 
             print("Umferð", umferdir, "\n=======================================") #Titill og Bil
-            kynd_spilara = random.randint(0,len(spilari)-1)
-
             s_spil = spilari[0]
             t_spil = talva[0]
 
@@ -133,25 +130,17 @@ while val != 3:
 
             #Spilarinn á umferð núna
             svar = 0
+            Sigurvegari = "0"
             if spilariSpilar == 1:
                 #Valmynd til að velja flokk
                 print("Hverjux viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
                 svar = int(input("Sláðu inn tölu: "))
 
-<<<<<<< HEAD
-                if svar == "1":
-                    t1 = Keppa(s_spil, t_spil, s_spil.thyngd, t_spil.thyngd)
-                    t1.keppni()
-
-                elif svar == "2":
-=======
                 if svar == 1:
-                    if s_spil.thyngd > t_spil.thyngd:
-                        spilariVann(s_spil, t_spil)
-                    else:
-                        talvaVann(s_spil, t_spil)
+                    h1 = Keppa(s_spil,t_spil,t_spil.thyngd,s_spil.thyngd)
+                    Sigurvegari = h1.keppni()
+
                 elif svar == 2:
->>>>>>> 7ae9e20db30b54ad1f627924308b77ad315fecfa
                     if s_spil.mjolk > t_spil.mjolk:
                         spilariVann(s_spil, t_spil)
                 elif svar == 3:
@@ -209,6 +198,15 @@ while val != 3:
                     print("Talvan spilar í flokkinum: Malir")
                     if t_spil.malir > s_spil.malir:
                         talvaVann(s_spil, t_spil)
+
+            if Sigurvegari == "T":
+                spilariSpilar = 0
+                talvaSpilar = 1
+            elif Sigurvegari == "S":
+                spilariSpilar = 1
+                talvaSpilar = 0
+            elif Sigurvegari == "J":
+                print("EKKI TILBÚIÐ")#EKKI TILBÚIÐ
 
             #Ef spilastokkur spilarans er búinn, þá endar leikurinn
             if len(spilari) == 0:
