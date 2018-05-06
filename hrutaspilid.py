@@ -31,8 +31,9 @@ class Keppa():
 
     def keppni(self):
         if self.tolva_keppa > self.spilari_keppa:
-            print("\n==============================\n")
-            print("Þú tapaðir\n")
+            input("Ýttu á enter til þess að halda áfram")
+            print("Tölvan er með",self.tolva_keppa,"og þú ert með",self.spilari_keppa)
+            print("\nÞú tapaðir\n")
             talva.append(self.spil_s)
             spilari.pop(spilari.index(self.spil_s))
             talva.append(talva.pop(talva.index(self.spil_t)))
@@ -53,7 +54,6 @@ class Keppa():
         else:
             print("ERROR, Class: Keppa, Fall: Keppni")
 
-  
 
 spil = []
 skra = open("hrutar.txt", "r")
@@ -167,35 +167,52 @@ while val != 3:
             elif spilariSpilar == False:
                 print("> Talvan á leik")
                 tel = random.randint(1,8)
+
                 if tel == 1:
+                    print("\n==============================\n")
+                    print("Tölvan valdi þyngd")
                     h1 = Keppa(s_spil,t_spil,t_spil.thyngd,s_spil.thyngd)
                     Sigurvegari = h1.keppni()
 
                 elif tel == 2:
+                    print("\n==============================\n")
+                    print("Tölvan valdi mjólk")
                     h1 = Keppa(s_spil,t_spil,t_spil.mjolk,s_spil.mjolk)
                     Sigurvegari = h1.keppni()
                     
                 elif tel == 3:
+                    print("\n==============================\n")
+                    print("Tölvan valdi ull")
                     h1 = Keppa(s_spil,t_spil,t_spil.ull,s_spil.ull)
                     Sigurvegari = h1.keppni()
 
                 elif tel == 4:
+                    print("\n==============================\n")
+                    print("Tölvan valdi fjölda afkvæma")
                     h1 = Keppa(s_spil,t_spil,t_spil.fjAfkvaema,s_spil.fjAfkvaema)
                     Sigurvegari = h1.keppni()
 
                 elif tel == 5:
+                    print("\n==============================\n")
+                    print("Tölvan valdi læri")
                     h1 = Keppa(s_spil,t_spil,t_spil.laeri,s_spil.laeri)
                     Sigurvegari = h1.keppni()
 
                 elif tel == 6:
+                    print("\n==============================\n")
+                    print("Tölvan valdi frjósemi")
                     h1 = Keppa(s_spil,t_spil,t_spil.frjosemi,s_spil.frjosemi)
                     Sigurvegari = h1.keppni()
                     
                 elif tel == 7:
+                    print("\n==============================\n")
+                    print("Tölvan valdi þykki baks")
                     h1 = Keppa(s_spil,t_spil,t_spil.thykkiBaks,s_spil.thykkiBaks)
                     Sigurvegari = h1.keppni()
                     
                 elif tel == 8:
+                    print("\n==============================\n")
+                    print("Tölvan valdi malir")
                     h1 = Keppa(s_spil,t_spil,t_spil.malir,s_spil.malir)
                     Sigurvegari = h1.keppni()
             
@@ -205,6 +222,8 @@ while val != 3:
                 spilariSpilar = True
             elif Sigurvegari == "J":
                 print("JAFNTEFLI EKKI TILBÚIÐ")
+
+            print("Tölvan er með",len(talva),"spil og þú ert með",len(spilari),"spil\n")
 
             #Ef spilastokkur spilarans er búinn, þá endar leikurinn
             if len(spilari) == 0:
