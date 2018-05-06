@@ -33,13 +33,17 @@ class Keppa():
         if self.tolva_keppa > self.spilari_keppa:
             print("\n==============================\n")
             print("Þú tapaðir\n")
-            talvaVann(self.spil_s,self.spil_t)
+            talva.append(self.spil_s)
+            spilari.pop(spilari.index(self.spil_s))
+            talva.append(talva.pop(talva.index(self.spil_t)))
             return "T"
 
         elif self.tolva_keppa < self.spilari_keppa:
             print("\n==============================\n")
             print("Þú vannst\n")
-            spilariVann(self.spil_s,self.spil_t)
+            spilari.append(self.spil_t)
+            talva.pop(talva.index(self.spil_t))
+            spilari.append(spilari.pop(spilari.index(self.spil_s)))
             return "S"
 
         elif self.spilari_keppa == self.tolva_keppa:
@@ -49,16 +53,7 @@ class Keppa():
         else:
             print("ERROR, Class: Keppa, Fall: Keppni")
 
-
-def spilariVann(spil_s, spil_t):
-    spilari.append(spil_t)
-    talva.pop(talva.index(spil_t))
-    spilari.append(spilari.pop(spilari.index(spil_s)))
-
-def talvaVann(spil_s, spil_t):
-    talva.append(spil_s)
-    spilari.pop(spilari.index(spil_s))
-    talva.append(talva.pop(talva.index(spil_t)))
+  
 
 spil = []
 skra = open("hrutar.txt", "r")
@@ -209,7 +204,7 @@ while val != 3:
             elif Sigurvegari == "S":
                 spilariSpilar = True
             elif Sigurvegari == "J":
-                Print("JAFNTEFLI EKKI TILBÚIÐ")
+                print("JAFNTEFLI EKKI TILBÚIÐ")
 
             #Ef spilastokkur spilarans er búinn, þá endar leikurinn
             if len(spilari) == 0:
