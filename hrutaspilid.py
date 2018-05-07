@@ -22,19 +22,38 @@ class Hrutar():
         self.thykkiBaks = thykkiBaks
         self.malir = malir
 
-def spilariVann(spil_s, spil_t):
-    print("Þú vannst")
-    spilari.append(spil_t)
-    talva.pop(talva.index(spil_t))
-    spilariSpilar = True
-    spilari.append(spilari.pop(spilari.index(spil_s)))
+        
+class Keppa():
+    def __init__(self, spil_s, spil_t, tolva_keppa, spilari_keppa):
+        self.spil_t = spil_t
+        self.spil_s = spil_s
+        self.tolva_keppa = tolva_keppa
+        self.spilari_keppa = spilari_keppa
 
-def talvaVann(spil_s, spil_t):
-    print("Þú tapaðir")
-    talva.append(spil_s)
-    spilari.pop(spilari.index(spil_s))
-    spilariSpilar = False
-    talva.append(talva.pop(talva.index(spil_t)))
+    def keppni(self):
+        if self.tolva_keppa > self.spilari_keppa:
+            input("Ýttu á enter til þess að halda áfram")
+            print("Tölvan er með",self.tolva_keppa,"og þú ert með",self.spilari_keppa)
+            print("\nÞú tapaðir\n")
+            talva.append(self.spil_s)
+            spilari.pop(spilari.index(self.spil_s))
+            talva.append(talva.pop(talva.index(self.spil_t)))
+            return "T"
+
+        elif self.tolva_keppa < self.spilari_keppa:
+            print("\n==============================\n")
+            print("Þú vannst\n")
+            spilari.append(self.spil_t)
+            talva.pop(talva.index(self.spil_t))
+            spilari.append(spilari.pop(spilari.index(self.spil_s)))
+            return "S"
+
+        elif self.spilari_keppa == self.tolva_keppa:
+            print("jafntefli\n")
+            return "J"
+
+        else:
+            print("ERROR, Class: Keppa, Fall: Keppni")
 
 spil = []
 skra = open("hrutar.txt", "r")
@@ -78,16 +97,19 @@ while val != 3:
 
     #Liður 2
     elif val == 2:
-
-        spilariSpilar = True
+        spilariSpilar = random.choice([True, False])
         leiklokid = False
         
         while leiklokid != True:
-
-            print("\n> Umferð", umferdir, "\n=======================================") #Titill og Bil
+            print("Umferð", umferdir, "\n") #Titill og Bil
 
             s_spil = spilari[0]
             t_spil = talva[0]
+
+            if spilariSpilar == False:
+                print("=====Talvan á leik=====")
+            elif spilariSpilar == True:
+                print("=====Þú átt leik=====")
 
             print("> Hér er spilið þitt:")
             print("\nNafn:", s_spil.nafn)
@@ -97,6 +119,9 @@ while val != 3:
             print("_________________________________")
             print("Læri\tFrjós\tÞykkBak\tMalir")
             print(s_spil.laeri +"\t"+ s_spil.frjosemi +"\t"+ s_spil.thykkiBaks +"\t"+ s_spil.malir)
+            input("Ýttu á enter til þess að halda áfram")
+            print("=======================================")
+
 
             #Spilarinn á umferð núna
             svar = 0
@@ -106,84 +131,100 @@ while val != 3:
                 svar = int(input("Sláðu inn tölu: "))
                 
                 if svar == 1:
-                    if s_spil.thyngd > t_spil.thyngd:
-                        spilariVann(s_spil, t_spil)
-                    else:
-                        talvaVann(s_spil, t_spil)
+                    h1 = Keppa(s_spil,t_spil,t_spil.thyngd,s_spil.thyngd)
+                    Sigurvegari = h1.keppni()
+
                 elif svar == 2:
-                    if s_spil.mjolk > t_spil.mjolk:
-                        spilariVann(s_spil, t_spil)
+                    h1 = Keppa(s_spil,t_spil,t_spil.mjolk,s_spil.mjolk)
+                    Sigurvegari = h1.keppni()
+                    
                 elif svar == 3:
-                    if s_spil.ull > t_spil.ull:
-                        spilariVann(s_spil, t_spil)
+                    h1 = Keppa(s_spil,t_spil,t_spil.ull,s_spil.ull)
+                    Sigurvegari = h1.keppni()
+
                 elif svar == 4:
-                    if s_spil.fjAfkvaema > t_spil.fjAfkvaema:
-                        spilariVann(s_spil, t_spil)
+                    h1 = Keppa(s_spil,t_spil,t_spil.fjAfkvaema,s_spil.fjAfkvaema)
+                    Sigurvegari = h1.keppni()
+
                 elif svar == 5:
-                    if s_spil.laeri > t_spil.laeri:
-                        spilariVann(s_spil, t_spil)
+                    h1 = Keppa(s_spil,t_spil,t_spil.laeri,s_spil.laeri)
+                    Sigurvegari = h1.keppni()
+
                 elif svar == 6:
-                    if s_spil.frjosemi > t_spil.frjosemi:
-                        spilariVann(s_spil, t_spil)
+                    h1 = Keppa(s_spil,t_spil,t_spil.frjosemi,s_spil.frjosemi)
+                    Sigurvegari = h1.keppni()
+                    
                 elif svar == 7:
-                    if s_spil.thykkiBaks > t_spil.thykkiBaks:
-                        spilariVann(s_spil, t_spil)
+                    h1 = Keppa(s_spil,t_spil,t_spil.thykkiBaks,s_spil.thykkiBaks)
+                    Sigurvegari = h1.keppni()
+                    
+
                 elif svar == 8:
-                    if s_spil.malir > t_spil.malir:
-                        spilariVann(s_spil, t_spil)
+                    h1 = Keppa(s_spil,t_spil,t_spil.malir,s_spil.malir)
+                    Sigurvegari = h1.keppni()
 
             #Talvan á umferð núna           
-            elif spilariSpilar == 0:
+            elif spilariSpilar == False:
+
                 print("> Talvan á leik")
                 tel = random.randint(1,8)
+
                 if tel == 1:
-                    print("Talvan spilar í flokkinum: Þyngd")
-                    if t_spil.thyngd > s_spil.thyngd:
-                        talvaVann(s_spil, t_spil)
-                    else:
-                        spilariVann(s_spil, t_spil)
+                    print("\n==============================\n")
+                    print("Tölvan valdi þyngd")
+                    h1 = Keppa(s_spil,t_spil,t_spil.thyngd,s_spil.thyngd)
+                    Sigurvegari = h1.keppni()
+
                 elif tel == 2:
-                    print("Talvan spilar í flokkinum: Mjólk")
-                    if t_spil.mjolk > s_spil.mjolk:
-                        talvaVann(s_spil, t_spil)
-                    else:
-                        spilariVann(s_spil, t_spil)
+                    print("\n==============================\n")
+                    print("Tölvan valdi mjólk")
+                    h1 = Keppa(s_spil,t_spil,t_spil.mjolk,s_spil.mjolk)
+                    Sigurvegari = h1.keppni()
+                    
                 elif tel == 3:
-                    print("Talvan spilar í flokkinum: Ull")
-                    if t_spil.ull > s_spil.ull:
-                        talvaVann(s_spil, t_spil)
-                    else:
-                        spilariVann(s_spil, t_spil)
+                    print("\n==============================\n")
+                    print("Tölvan valdi ull")
+                    h1 = Keppa(s_spil,t_spil,t_spil.ull,s_spil.ull)
+                    Sigurvegari = h1.keppni()
+
                 elif tel == 4:
-                    print("Talvan spilar í flokkinum: Fjöldi Afkvæma")
-                    if t_spil.fjAfkvaema > s_spil.fjAfkvaema:
-                        talvaVann(s_spil, t_spil)
-                    else:
-                        spilariVann(s_spil, t_spil)
+                    print("\n==============================\n")
+                    print("Tölvan valdi fjölda afkvæma")
+                    h1 = Keppa(s_spil,t_spil,t_spil.fjAfkvaema,s_spil.fjAfkvaema)
+                    Sigurvegari = h1.keppni()
+
                 elif tel == 5:
-                    print("Talvan spilar í flokkinum: Læri")
-                    if t_spil.laeri > s_spil.laeri:
-                        talvaVann(s_spil, t_spil)
-                    else:
-                        spilariVann(s_spil, t_spil)
+                    print("\n==============================\n")
+                    print("Tölvan valdi læri")
+                    h1 = Keppa(s_spil,t_spil,t_spil.laeri,s_spil.laeri)
+                    Sigurvegari = h1.keppni()
+
                 elif tel == 6:
-                    print("Talvan spilar í flokkinum: Frjósemi")
-                    if t_spil.frjosemi > s_spil.frjosemi:
-                        talvaVann(s_spil, t_spil)
-                    else:
-                        spilariVann(s_spil, t_spil)
+                    print("\n==============================\n")
+                    print("Tölvan valdi frjósemi")
+                    h1 = Keppa(s_spil,t_spil,t_spil.frjosemi,s_spil.frjosemi)
+                    Sigurvegari = h1.keppni()
+                    
                 elif tel == 7:
-                    print("Talvan spilar í flokkinum: Þykki Baks")
-                    if t_spil.thykkiBaks > s_spil.thykkiBaks:
-                        talvaVann(s_spil, t_spil)
-                    else:
-                        spilariVann(s_spil, t_spil)
+                    print("\n==============================\n")
+                    print("Tölvan valdi þykki baks")
+                    h1 = Keppa(s_spil,t_spil,t_spil.thykkiBaks,s_spil.thykkiBaks)
+                    Sigurvegari = h1.keppni()
+                    
                 elif tel == 8:
-                    print("Talvan spilar í flokkinum: Malir")
-                    if t_spil.malir > s_spil.malir:
-                        talvaVann(s_spil, t_spil)
-                    else:
-                        spilariVann(s_spil, t_spil)
+                    print("\n==============================\n")
+                    print("Tölvan valdi malir")
+                    h1 = Keppa(s_spil,t_spil,t_spil.malir,s_spil.malir)
+                    Sigurvegari = h1.keppni()
+            
+            if Sigurvegari == "T":
+                spilariSpilar = False
+            elif Sigurvegari == "S":
+                spilariSpilar = True
+            elif Sigurvegari == "J":
+                print("JAFNTEFLI EKKI TILBÚIÐ")
+
+            print("Tölvan er með",len(talva),"spil og þú ert með",len(spilari),"spil\n")
 
             #Ef spilastokkur spilarans er búinn, þá endar leikurinn
             if len(spilari) == 0:
