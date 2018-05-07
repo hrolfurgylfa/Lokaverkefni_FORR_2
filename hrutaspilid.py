@@ -223,7 +223,7 @@ while val != 3:
             elif Sigurvegari == "S":
                 spilariSpilar = True
             elif Sigurvegari == "J":
-                print("JAFNTEFLI EKKI TILBÚIÐ")
+                pass
 
             print("Tölvan er með",len(talva),"spil og þú ert með",len(spilari),"spil\n")
 
