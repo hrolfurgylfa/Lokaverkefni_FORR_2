@@ -135,7 +135,7 @@ while val != 3:
             svar = 0
             if spilariSpilar == True:
                 #Valmynd til að velja flokk
-                print("Hverju viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
+                print("Hverju viltu keppa í?\n1. Þyngd\t",s_spil.thyngd,"\n2. Mjólk\t",s_spil.mjolk,"\n3. Ull\t",s_spil.ull,"\n4. Fj Afkvæma\t",s_spil.fjAfkvaema,"\n5. Læri\t",s_spil.laeri,"\n6. Frjósemi\t",s_spil.frjosemi,"\n7. Þykki Baks\t",s_spil.thykkiBaks,"\n8. Malir",s_spil.malir)
                 svar = int(input("Sláðu inn tölu: "))
 
                 print("=======================================")
