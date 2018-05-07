@@ -39,6 +39,10 @@ class Keppa():
             talva.append(self.spil_s)
             spilari.pop(spilari.index(self.spil_s))
             talva.append(talva.pop(talva.index(self.spil_t)))
+
+            if len(jafntefli) > 0:
+                talva.extend(jafntefli)
+                del jafntefli[:]
             return "T"
 
         elif self.tolva_keppa < self.spilari_keppa:
@@ -46,10 +50,18 @@ class Keppa():
             spilari.append(self.spil_t)
             talva.pop(talva.index(self.spil_t))
             spilari.append(spilari.pop(spilari.index(self.spil_s)))
+
+            if len(jafntefli) > 0:
+                spilari.extend(jafntefli)
+                del jafntefli[:]
             return "S"
 
         elif self.spilari_keppa == self.tolva_keppa:
-            print("jafntefli\n")
+            jafntefli.append(self.spil_s)
+            jafntefli.append(self.spil_t)
+            spilari.pop(spilari.index(self.spil_s))
+            talva.pop(talva.index(self.spil_t))
+            print("* Jafntefli\n")
             return "J"
 
         else:
@@ -66,10 +78,11 @@ spilastokkur = []
 
 for stak in spil:
     temp = stak.split(",")
-    spilastokkur.append(Hrutar(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6], temp[7], temp[8]))
+    spilastokkur.append(Hrutar(temp[0], float(temp[1]), float(temp[2]), float(temp[3]), float(temp[4]), float(temp[5]), float(temp[6]), float(temp[7]), float(temp[8])))
 
 spilari = []
 talva = []
+jafntefli = []
 
 random.shuffle(spilastokkur)
 for x in range(26):
@@ -111,11 +124,11 @@ while val != 3:
             print("\nNafn:", s_spil.nafn)
             print("_________________________________")
             print("Þyngd\tMjólk\tUll\tFjafkvæma")
-            print(s_spil.thyngd +"\t"+ s_spil.mjolk +"\t"+ s_spil.ull +"\t"+ s_spil.fjAfkvaema)
+            print(str(s_spil.thyngd) +"\t"+ str(s_spil.mjolk) +"\t"+ str(s_spil.ull) +"\t"+ str(s_spil.fjAfkvaema))
             print("_________________________________")
             print("Læri\tFrjós\tÞykkBak\tMalir")
-            print(s_spil.laeri +"\t"+ s_spil.frjosemi +"\t"+ s_spil.thykkiBaks +"\t"+ s_spil.malir)
-
+            print(str(s_spil.laeri) +"\t"+ str(s_spil.frjosemi) +"\t"+ str(s_spil.thykkiBaks) +"\t"+ str(s_spil.malir))
+            print("_________________________________\n")
 
             #Spilarinn á umferð núna
             svar = 0
@@ -167,17 +180,17 @@ while val != 3:
 
                 if tel == 1:
                     print("Talvan valdi flokkin: Þyngd")
-                    h1 = Keppa(s_spil,t_spil,t_spil.thyngd,s_spil.thyngd)
+                    h1 = Keppa(s_spil, t_spil, t_spil.thyngd, s_spil.thyngd)
                     Sigurvegari = h1.keppni()
 
                 elif tel == 2:
                     print("Talvan valdi flokkin: Mjólk")
-                    h1 = Keppa(s_spil,t_spil,t_spil.mjolk,s_spil.mjolk)
+                    h1 = Keppa(s_spil, t_spil, t_spil.mjolk, s_spil.mjolk)
                     Sigurvegari = h1.keppni()
                     
                 elif tel == 3:
                     print("Talvan valdi flokkin: Ull")
-                    h1 = Keppa(s_spil,t_spil,t_spil.ull,s_spil.ull)
+                    h1 = Keppa(s_spil, t_spil, t_spil.ull, s_spil.ull)
                     Sigurvegari = h1.keppni()
 
                 elif tel == 4:
