@@ -6,6 +6,7 @@ Lokaverkefni - Hrútaspilið
 '''
 
 import random
+global spil_a_bordi
 
 class Hrutar():
 
@@ -31,25 +32,38 @@ class Keppa():
         self.spilari_keppa = spilari_keppa
 
     def keppni(self):
+        print("Tölvan er með",self.tolva_keppa,"og þú ert með",self.spilari_keppa)
+        input("Ýttu á enter til þess að halda áfram")
+        print("\n==============================\n")
         if self.tolva_keppa > self.spilari_keppa:
-            input("Ýttu á enter til þess að halda áfram")
-            print("Tölvan er með",self.tolva_keppa,"og þú ert með",self.spilari_keppa)
-            print("\nÞú tapaðir\n")
+            if len(spil_a_bordi) != 0:
+                print("\nÞú tapaðir\nog tölvan fær líka",len(spil_a_bordi),"spil sem voru undir")
+
+            else:
+                print("\nÞú tapaðir\n")
             talva.append(self.spil_s)
             spilari.pop(spilari.index(self.spil_s))
             talva.append(talva.pop(talva.index(self.spil_t)))
             return "T"
 
         elif self.tolva_keppa < self.spilari_keppa:
-            print("\n==============================\n")
-            print("Þú vannst\n")
+            if len(spil_a_bordi) != 0:
+                print("\nÞú vannst\nog tölvan fær líka",len(spil_a_bordi),"spil sem voru undir")
+                
+            else:
+                print("\nÞú vannst\n")
             spilari.append(self.spil_t)
             talva.pop(talva.index(self.spil_t))
             spilari.append(spilari.pop(spilari.index(self.spil_s)))
             return "S"
 
         elif self.spilari_keppa == self.tolva_keppa:
-            print("jafntefli\n")
+            print("jafntefli\nspiling voru lögð undir")
+            spil_a_bordi.append(self.spil_s)
+            spil_a_bordi.append(self.spil_t)
+            spilari.pop(spilari.index(self.spil_s))
+            talva.pop(talva.index(self.spil_t))
+            
             return "J"
 
         else:
@@ -70,6 +84,7 @@ for stak in spil:
 
 spilari = []
 talva = []
+spil_a_bordi = []
 
 random.shuffle(spilastokkur)
 for x in range(26):
@@ -219,10 +234,22 @@ while val != 3:
             
             if Sigurvegari == "T":
                 spilariSpilar = False
+                Sigurvegari = ""
             elif Sigurvegari == "S":
                 spilariSpilar = True
-            elif Sigurvegari == "J":
-                print("JAFNTEFLI EKKI TILBÚIÐ")
+                Sigurvegari = ""
+            elif Sigurvegari == "JT":
+                for x in range(0,len(spil_a_bordi)):
+                    tolva.append(spil_a_bordi[x])
+                spil_a_bordi = []
+                print(spil_a_bordi)#TEST
+                Sigurvegari = ""
+            elif Sigurvegari == "JS":
+                for x in range(0,len(spil_a_bordi)):
+                    spilari.append(spil_a_bordi[x])
+                spil_a_bordi = []
+                print(spil_a_bordi)#TEST
+                Sigurvegari = ""
 
             print("Tölvan er með",len(talva),"spil og þú ert með",len(spilari),"spil\n")
 
