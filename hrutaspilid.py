@@ -22,6 +22,7 @@ class Hrutar():
         self.thykkiBaks = thykkiBaks
         self.malir = malir
 
+        
 class Keppa():
     def __init__(self, spil_s, spil_t, tolva_keppa, spilari_keppa):
         self.spil_t = spil_t
@@ -53,7 +54,6 @@ class Keppa():
 
         else:
             print("ERROR, Class: Keppa, Fall: Keppni")
-
 
 spil = []
 skra = open("hrutar.txt", "r")
@@ -97,12 +97,12 @@ while val != 3:
 
     #Liður 2
     elif val == 2:
-
         spilariSpilar = random.choice([True, False])
         leiklokid = False
+        
         while leiklokid != True:
-
             print("Umferð", umferdir, "\n") #Titill og Bil
+
             s_spil = spilari[0]
             t_spil = talva[0]
 
@@ -112,11 +112,11 @@ while val != 3:
                 print("=====Þú átt leik=====")
 
             print("> Hér er spilið þitt:")
-            print("Nafn:\n" + s_spil.nafn)
-            print()#Þetta er til þess að gera enter
+            print("\nNafn:", s_spil.nafn)
+            print("_________________________________")
             print("Þyngd\tMjólk\tUll\tFjafkvæma")
             print(s_spil.thyngd +"\t"+ s_spil.mjolk +"\t"+ s_spil.ull +"\t"+ s_spil.fjAfkvaema)
-            print()#Þetta er til þess að gera enter
+            print("_________________________________")
             print("Læri\tFrjós\tÞykkBak\tMalir")
             print(s_spil.laeri +"\t"+ s_spil.frjosemi +"\t"+ s_spil.thykkiBaks +"\t"+ s_spil.malir)
             input("Ýttu á enter til þess að halda áfram")
@@ -129,7 +129,7 @@ while val != 3:
                 #Valmynd til að velja flokk
                 print("Hverju viltu keppa í?\n1. Þyngd\n2. Mjólk\n3. Ull\n4. Fj Afkvæma\n5. Læri\n6. Frjósemi\n7. Þykki Baks\n8. Malir")
                 svar = int(input("Sláðu inn tölu: "))
-
+                
                 if svar == 1:
                     h1 = Keppa(s_spil,t_spil,t_spil.thyngd,s_spil.thyngd)
                     Sigurvegari = h1.keppni()
@@ -165,6 +165,7 @@ while val != 3:
 
             #Talvan á umferð núna           
             elif spilariSpilar == False:
+
                 print("> Talvan á leik")
                 tel = random.randint(1,8)
 
