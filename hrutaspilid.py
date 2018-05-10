@@ -33,7 +33,11 @@ class Keppa():
 
     def keppni(self):
 
+        if self.tolva_keppa > self.spilari_keppa:
+            input("> Ýttu á enter til þess að halda áfram:")
+
         print("Talvan er með", self.tolva_keppa, "og þú ert með", self.spilari_keppa)
+        input("> Ýttu á enter til þess að halda áfram:")
         
         if self.tolva_keppa > self.spilari_keppa:
             print("* Þú tapaðir\n")
@@ -42,6 +46,8 @@ class Keppa():
             talva.append(talva.pop(talva.index(self.spil_t)))
 
             if len(jafntefli) > 0:
+                print("og talvan fær spilin sem voru undir")
+                input("> Ýttu á enter til þess að halda áfram:")
                 talva.extend(jafntefli)
                 del jafntefli[:]
             return "T"
@@ -53,6 +59,8 @@ class Keppa():
             spilari.append(spilari.pop(spilari.index(self.spil_s)))
 
             if len(jafntefli) > 0:
+                print("og þú færð spilin sem voru undir")
+                input("> Ýttu á enter til þess að halda áfram:")
                 spilari.extend(jafntefli)
                 del jafntefli[:]
             return "S"
@@ -63,6 +71,7 @@ class Keppa():
             spilari.pop(spilari.index(self.spil_s))
             talva.pop(talva.index(self.spil_t))
             print("* Jafntefli\n")
+            print("Splin voru lögð undir")
             return "J"
 
         else:
@@ -121,21 +130,11 @@ while val != 3:
             s_spil = spilari[0]
             t_spil = talva[0]
 
-            print("> Hér er spilið þitt:")
-            print("\nNafn:", s_spil.nafn)
-            print("_________________________________")
-            print("Þyngd\tMjólk\tUll\tFjafkvæma")
-            print(str(s_spil.thyngd) +"\t"+ str(s_spil.mjolk) +"\t"+ str(s_spil.ull) +"\t"+ str(s_spil.fjAfkvaema))
-            print("_________________________________")
-            print("Læri\tFrjós\tÞykkBak\tMalir")
-            print(str(s_spil.laeri) +"\t"+ str(s_spil.frjosemi) +"\t"+ str(s_spil.thykkiBaks) +"\t"+ str(s_spil.malir))
-            print("_________________________________\n")
-
             #Spilarinn á umferð núna
             svar = 0
             if spilariSpilar == True:
                 #Valmynd til að velja flokk
-                print("Hverju viltu keppa í?\n1. Þyngd\t",s_spil.thyngd,"\n2. Mjólk\t",s_spil.mjolk,"\n3. Ull\t",s_spil.ull,"\n4. Fj Afkvæma\t",s_spil.fjAfkvaema,"\n5. Læri\t",s_spil.laeri,"\n6. Frjósemi\t",s_spil.frjosemi,"\n7. Þykki Baks\t",s_spil.thykkiBaks,"\n8. Malir",s_spil.malir)
+                print("Hverju viltu keppa í?\n\nNafn:", s_spil.nafn,"\n\n1. Þyngd\t",s_spil.thyngd,"\n2. Mjólk\t",s_spil.mjolk,"\n3. Ull\t\t",s_spil.ull,"\n4. Fj Afkvæma\t",s_spil.fjAfkvaema,"\n5. Læri\t\t",s_spil.laeri,"\n6. Frjósemi\t",s_spil.frjosemi,"\n7. Þykki Baks\t",s_spil.thykkiBaks,"\n8. Malir\t",s_spil.malir)
                 svar = int(input("Sláðu inn tölu: "))
 
                 print("=======================================")
