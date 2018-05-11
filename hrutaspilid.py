@@ -5,14 +5,10 @@ Mikael og Hrólfur
 Lokaverkefni - Hrútaspilið
 '''
 
-import random
-global spil_a_bordi
+import random#Þetta leyfir manni að gera random tölur
 
 class Hrutar():
-
-    fj_hruta = 0
-
-    def __init__(self, nafn, thyngd, mjolk, ull, fjAfkvaema, laeri, frjosemi, thykkiBaks, malir):
+    def __init__(self, nafn, thyngd, mjolk, ull, fjAfkvaema, laeri, frjosemi, thykkiBaks, malir):#Þetta býr til tilvik af klasanum til þess að það sé auðvlet að fá gildin af öllu
         self.nafn = nafn
         self.thyngd = thyngd
         self.mjolk = mjolk
@@ -22,10 +18,9 @@ class Hrutar():
         self.frjosemi = frjosemi
         self.thykkiBaks = thykkiBaks
         self.malir = malir
-
-        
+      
 class Keppa():
-    def __init__(self, spil_s, spil_t, tolva_keppa, spilari_keppa):
+    def __init__(self, spil_s, spil_t, tolva_keppa, spilari_keppa):#Þetta býr till allar breyturnar sem þarf að nota í klasanum
         self.spil_t = spil_t
         self.spil_s = spil_s
         self.tolva_keppa = tolva_keppa
@@ -33,46 +28,45 @@ class Keppa():
 
     def keppni(self):
 
-        print("Tölvan er með", self.tolva_keppa, "og þú ert með", self.spilari_keppa)
-        input()
+        print("Tölvan er með", self.tolva_keppa, "og þú ert með", self.spilari_keppa)#Þetta segir spilaranum hversu mörg spil spilarinn og tölvan eru með
+        input()#Þetta er til þess að gera pásu svo að spilarinn geti lesið hvað er að gerast
         
-        if self.tolva_keppa > self.spilari_keppa:
+        if self.tolva_keppa > self.spilari_keppa:#Þetta gerist ef tölvan er með hærra spil
             print("* Þú tapaðir\n")
-            talva.append(self.spil_s)
-            spilari.pop(spilari.index(self.spil_s))
-            talva.append(talva.pop(talva.index(self.spil_t)))
+            talva.append(self.spil_s)#Þetta bætir spili spilarans neðst í bunka tölvunar
+            spilari.pop(spilari.index(self.spil_s))#Þetta eyðir spili spilarans úr hendini hans
+            talva.append(talva.pop(talva.index(self.spil_t)))#Þetta færir spilið sem tölvan var að vinna með neðst
 
-            if len(jafntefli) > 0:
+            if len(jafntefli) > 0:#Þetta gerist ef það er eitthvað á listanum jafntefli
                 print("og tölvan fær spilin sem voru undir")
-                input()
-                talva.extend(jafntefli)
-                del jafntefli[:]
-            return "T"
+                input()#Þetta er til þess að gera pásu svo að spilarinn geti lesið hvað er að gerast
+                talva.extend(jafntefli)#Þetta bætir öllu á listanum jafntefli á listann talva
+                del jafntefli[:]#Þetta eyðir öllu af listanum jafntefli
+            return "T"#Þetta skilar stafnum T svo að seinna sé svo hægt að breyta svo að hann sem vann spili næst vegna þess að það er ekki hægt að gera það hérna
 
-        elif self.tolva_keppa < self.spilari_keppa:
+        elif self.tolva_keppa < self.spilari_keppa:#Þetta gerist ef spilarinn er með hærra spil
             print("* Þú vannst\n")
-            spilari.append(self.spil_t)
-            talva.pop(talva.index(self.spil_t))
-            spilari.append(spilari.pop(spilari.index(self.spil_s)))
+            spilari.append(self.spil_t)#Þetta bætir spili tölvunar neðst í bunka spilarans
+            talva.pop(talva.index(self.spil_t))#Þetta eyðir spili tölvunar úr hendini hennar
+            spilari.append(spilari.pop(spilari.index(self.spil_s)))#Þetta færir spilið sem spilarinn var að vinna með neðst
 
-            if len(jafntefli) > 0:
+            if len(jafntefli) > 0:#Þetta gerist ef það er eitthvað á listanum jafntefli
                 print("og þú færð spilin sem voru undir")
-                input()
-                spilari.extend(jafntefli)
-                del jafntefli[:]
-            return "S"
+                input()#Þetta er til þess að gera pásu svo að spilarinn geti lesið hvað er að gerast
+                spilari.extend(jafntefli)#Þetta bætir öllu á listanum jafntefli á listann spilari
+                del jafntefli[:]#Þetta eyðir öllu af listanum jafntefli
+            return "S"#Þetta skilar stafnum S svo að seinna sé svo hægt að breyta svo að hann sem vann spili næst vegna þess að það er ekki hægt að gera það hérna
 
-        elif self.spilari_keppa == self.tolva_keppa:
-            jafntefli.append(self.spil_s)
-            jafntefli.append(self.spil_t)
-            spilari.pop(spilari.index(self.spil_s))
-            talva.pop(talva.index(self.spil_t))
+        elif self.spilari_keppa == self.tolva_keppa:#Þetta gerist ef spilarnir eru með jafn hág spil
+            jafntefli.append(self.spil_s)#Þetta bætir spili spilarans á listan jafntefli
+            jafntefli.append(self.spil_t)#Þetta bætir spili tölvunar á listan jafntefli
+            spilari.pop(spilari.index(self.spil_s))#Þetta eyðir spili spilarans
+            talva.pop(talva.index(self.spil_t))#Þetta eyðir spili tölvunar
             print("* Jafntefli\n")
             print("Splin voru lögð undir")
-            return "J"
 
         else:
-            print("ERROR, Class: Keppa, Fall: Keppni")
+            print("ERROR, Class: Keppa, Fall: Keppni")#Þetta er bara fyrir okkur til þess að finna villur ef það gerist eitthvað skrítið
 
 spil = []
 skra = open("hrutar.txt", "r")
@@ -206,7 +200,7 @@ while val != 3:
                 Sigurvegari = ""
 
             print("Tölvan er með",len(talva),"spil og þú ert með",len(spilari),"spil\n")
-            input()
+            input()#Þetta er til þess að gera pásu svo að spilarinn geti lesið hvað er að gerast
 
             #Ef spilastokkur spilarans er búinn, þá endar leikurinn
             if len(spilari) == 0:
@@ -224,7 +218,7 @@ while val != 3:
                 elif len(talva) == 0:
                     print("Þú vannst og tölvan tapaði!")#Spilari vann
             else:
-                umferdir+=1
+                umferdir += 1
 
     #Ef notandinn vill hætta eða sló inn ranga tölu
     else:
