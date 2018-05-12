@@ -1,7 +1,6 @@
 '''
 Mikael og Hrólfur
 4/23/2018
-
 Lokaverkefni - Hrútaspilið
 '''
 
@@ -68,6 +67,7 @@ class Keppa():
         else:
             print("ERROR, Class: Keppa, Fall: Keppni")#Þetta er bara fyrir okkur til þess að finna villur ef það gerist eitthvað skrítið
 
+#Opnar tectaskjalið sem geymir öll spilin og setur þau í lista
 spil = []
 skra = open("hrutar.txt", "r")
 for lina in skra:
@@ -75,35 +75,41 @@ for lina in skra:
 skra.close()
 
 temp = []
-spilastokkur = []
+spilastokkur = [] #Geymir öll spilin
 
+#Breytir öllum línunum í skjalinu í notanleg spil
 for stak in spil:
     temp = stak.split(",")
     spilastokkur.append(Hrutar(temp[0], float(temp[1]), float(temp[2]), float(temp[3]), float(temp[4]), float(temp[5]), float(temp[6]), float(temp[7]), float(temp[8])))
 
-spilari = []
-talva = []
-jafntefli = []
+spilari = []    #Spil notandans
+talva = []      #Spil tölvunar
+jafntefli = [] #Spil sem eru geymd í jafnteflinu
 
-random.shuffle(spilastokkur)
+random.shuffle(spilastokkur)  #Stokkar spilastokkin
+#Gefur spilaranum helmingin af spilunum
 for x in range(26):
     spilari.append(spilastokkur[x])
+#Gefur tölvunni helmingin af spilunum
 for x in range(26, 52):
     talva.append(spilastokkur[x])
 
+#Geymir umferðartal
 umferdir = 1
 
+#Valmynd
 val = 0
 while val != 3:
 
-    print("1. Spilareglur\n2. Spila\n3. Hætta")
-    val = int(input("Sláðu inn tölu: "))
+    print("1. Spilareglur\n2. Spila\n3. Hætta") #Valkostir
+    val = int(input("Sláðu inn tölu: ")) #Notandi velur
 
     print("=======================================") #Bil
 
     #Liður 1
     if val == 1:
         print("Spilareglunar\n=======================================") #Titill og Bil
+        #Reglur prentaðar út
         print("1) Í hverri umferð er spilað með efsta spili stokksins.")
         print("2) Þegar maður á leik, skal maður velja flokk til að keppa í.")
         print("3) Sá sem er með hæstu tölu flokks vinnur og fær að gera aftur.")
@@ -112,89 +118,110 @@ while val != 3:
 
     #Liður 2
     elif val == 2:
-        spilariSpilar = random.choice([True, False])
+        spilariSpilar = random.choice([True, False]) #Velur randomly hver byrjar
         leiklokid = False
-        
+
+        #á meðan leikinum er ekki lokið þá er haldið áfram að spila
         while leiklokid != True:
             print("Umferð", umferdir, "\n=======================================") #Titill og Bil
 
-            s_spil = spilari[0]
-            t_spil = talva[0]
+            s_spil = spilari[0] #Tekið fyrsta spilið úr búnkanum fyrir notandan
+            t_spil = talva[0]    #Tekið fyrsta spilið úr búnkanum fyrir tölvuna
 
             #Spilarinn á umferð núna
             svar = 0
             if spilariSpilar == True:
-                #Valmynd til að velja flokk
+                #Valmynd til að velja flokk til að keppa í
                 print("Hverju viltu keppa í?\n\nNafn:", s_spil.nafn,"\n\n1. Þyngd\t",s_spil.thyngd,"\n2. Mjólk\t",s_spil.mjolk,"\n3. Ull\t\t",s_spil.ull,"\n4. Fj Afkvæma\t",s_spil.fjAfkvaema,"\n5. Læri\t\t",s_spil.laeri,"\n6. Frjósemi\t",s_spil.frjosemi,"\n7. Þykki Baks\t",s_spil.thykkiBaks,"\n8. Malir\t",s_spil.malir)
                 svar = int(input("Sláðu inn tölu: "))
 
-                print("=======================================")
-                
+                print("=======================================") #Bil
+
+                #Ef spilarinn valdi Þyngd þá keppa þeir í því
                 if svar == 1:
                     h1 = Keppa(s_spil,t_spil,t_spil.thyngd,s_spil.thyngd)
                     Sigurvegari = h1.keppni()
+                #Ef spilarinn valdi Mjólk þá keppa þeir í því
                 elif svar == 2:
                     h1 = Keppa(s_spil,t_spil,t_spil.mjolk,s_spil.mjolk)
                     Sigurvegari = h1.keppni()
+                #Ef spilarinn valdi Ull þá keppa þeir í því
                 elif svar == 3:
                     h1 = Keppa(s_spil,t_spil,t_spil.ull,s_spil.ull)
                     Sigurvegari = h1.keppni()
+                #Ef spilarinn valdi Fjöldi afkvæma þá keppa þeir í því
                 elif svar == 4:
                     h1 = Keppa(s_spil,t_spil,t_spil.fjAfkvaema,s_spil.fjAfkvaema)
                     Sigurvegari = h1.keppni()
+                #Ef spilarinn valdi Læri þá keppa þeir í því
                 elif svar == 5:
                     h1 = Keppa(s_spil,t_spil,t_spil.laeri,s_spil.laeri)
                     Sigurvegari = h1.keppni()
+                #Ef spilarinn valdi Frjósemi þá keppa þeir í því
                 elif svar == 6:
                     h1 = Keppa(s_spil,t_spil,t_spil.frjosemi,s_spil.frjosemi)
                     Sigurvegari = h1.keppni()
+                #Ef spilarinn valdi Þykki Baks þá keppa þeir í því
                 elif svar == 7:
                     h1 = Keppa(s_spil,t_spil,t_spil.thykkiBaks,s_spil.thykkiBaks)
                     Sigurvegari = h1.keppni()
+                #Ef spilarinn valdi Malir þá keppa þeir í því
                 elif svar == 8:
                     h1 = Keppa(s_spil,t_spil,t_spil.malir,s_spil.malir)
                     Sigurvegari = h1.keppni()
+
             #Tölvan á umferð núna           
             elif spilariSpilar == False:
 
                 print("> Tölvan á leik")
-                tel = random.randint(1,8)
+                tel = random.randint(1,8) #talvan velur random flokk
 
+                #Ef talvan valdi Þyngd þá keppa þeir í því
                 if tel == 1:
                     print("Tölvan valdi flokkin: Þyngd")
                     h1 = Keppa(s_spil, t_spil, t_spil.thyngd, s_spil.thyngd)
                     Sigurvegari = h1.keppni()
+                #Ef talvan valdi Mjólk þá keppa þeir í því
                 elif tel == 2:
                     print("Tölvan valdi flokkin: Mjólk")
                     h1 = Keppa(s_spil, t_spil, t_spil.mjolk, s_spil.mjolk)
                     Sigurvegari = h1.keppni()
+                #Ef talvan valdi Ull þá keppa þeir í því
                 elif tel == 3:
                     print("Tölvan valdi flokkin: Ull")
                     h1 = Keppa(s_spil, t_spil, t_spil.ull, s_spil.ull)
                     Sigurvegari = h1.keppni()
+                #Ef talvan valdi Fjöldi afkvæma þá keppa þeir í því
                 elif tel == 4:
                     print("Tölvan valdi flokkin: Fjöldi afkvæma")
                     h1 = Keppa(s_spil,t_spil,t_spil.fjAfkvaema,s_spil.fjAfkvaema)
                     Sigurvegari = h1.keppni()
+                #Ef talvan valdi Læri þá keppa þeir í því
                 elif tel == 5:
                     print("Tölvan valdi flokkin: Læri")
                     h1 = Keppa(s_spil,t_spil,t_spil.laeri,s_spil.laeri)
                     Sigurvegari = h1.keppni()
+                #Ef talvan valdi Frjósemi þá keppa þeir í því
                 elif tel == 6:
                     print("Tölvan valdi flokkin: Frjósemi")
                     h1 = Keppa(s_spil,t_spil,t_spil.frjosemi,s_spil.frjosemi)
                     Sigurvegari = h1.keppni()
+                #Ef talvan valdi Þykki baks þá keppa þeir í því
                 elif tel == 7:
                     print("Tölvan valdi flokkin: Þykki baks")
                     h1 = Keppa(s_spil,t_spil,t_spil.thykkiBaks,s_spil.thykkiBaks)
                     Sigurvegari = h1.keppni()
+                #Ef talvan valdi Malir þá keppa þeir í því
                 elif tel == 8:
                     print("Tölvan valdi flokkin: Malir")
                     h1 = Keppa(s_spil,t_spil,t_spil.malir,s_spil.malir)
                     Sigurvegari = h1.keppni()
+
+            #Ef spilari tapar þá fær talvan að gera aftur       
             if Sigurvegari == "T":
                 spilariSpilar = False
                 Sigurvegari = ""
+            #Ef spilarinn vinnur þá fær hann að gera aftur
             elif Sigurvegari == "S":
                 spilariSpilar = True
                 Sigurvegari = ""
